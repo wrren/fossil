@@ -1,7 +1,21 @@
-var mockDB 	= require("mock-knex");
-var Fossil	= require("../fossil");
-var Model 	= Fossil({ client: 'sqlite' } );
+"use strict";
 
-mockDB.mock(db);
+var fs 		= require( "fs" );
+var path 	= require( "path" );
+fs.createReadStream( path.join( __dirname, "test.seed.sqlite" ) )
+	.pipe( fs.createWriteStream( path.join( __dirname, "test.sqlite" ) ) );
 
-mockDB.unmock(db);
+var Model 	= require( "../fossil" )( {
+	client: 'sqlite',
+	connection: {
+		filename: "./test.sqlite"
+	}
+} );
+
+var expect = require( 'chai' ).expect;
+
+class ExampleModel extends Model {}
+
+describe( 'Model', () => {
+
+} );

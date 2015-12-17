@@ -1,3 +1,9 @@
+# WebStorm
+.idea/
+
+# Copied Testing DB
+test/test.sqlite
+
 # Logs
 logs
 *.log

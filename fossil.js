@@ -1,8 +1,7 @@
-var Knex 	= require("knex");
 var Model 	= require("./lib/model");
 
-function Fossil(config) {
-	Model.db = new Knex(config);
+function Fossil( config ) {
+	Model.config( config );
 	return Model;
 }
 
