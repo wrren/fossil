@@ -20,6 +20,7 @@ describe( "namer", () => {
 		it( "converts a given name to camel case", () => {
 			expect( namer.camel( "bus" ) ).to.equal( "Bus" );
 			expect( namer.camel( "buS" ) ).to.equal( "Bus" );
+			expect( namer.camel( "BusStop" ) ).to.equal( "BusStop" );
 			expect( namer.camel( "Bus stop" ) ).to.equal( "BusStop" )
 			expect( namer.camel( "bus_stop" ) ).to.equal( "BusStop" );
 		} );
@@ -30,6 +31,13 @@ describe( "namer", () => {
 			expect( namer.underscore( "BusStop" ) ).to.equal( "bus_stop" );
 			expect( namer.underscore( "Bus Stop" ) ).to.equal( "bus_stop" );
 			expect( namer.underscore( "Bus" ) ).to.equal( "bus" );
+		} );
+	} );
+
+	describe( "#toTableName()", () => {
+		it( "converts the given model name to a database table name", () => {
+			expect( namer.toTableName( "BusStop" ) ).to.equal( "bus_stops" );
+			expect( namer.toTableName( "BusBusStop" ) ).to.equal( "bus_bus_stops" );
 		} );
 	} );
 } );
