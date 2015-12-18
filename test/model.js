@@ -23,6 +23,9 @@ ExampleParentModel.hasMany( ExampleModel );
 ExampleModel.belongsTo( ExampleParentModel );
 
 describe( 'Model', () => {
+	after( () => {
+		fs.unlinkSync( path.join( __dirname, "test.sqlite" ) );
+	} );
 
 	describe( "#all()", () => {
 		it( "should find and retrieve all ExampleModel objects", ( done ) => {
