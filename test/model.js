@@ -24,8 +24,8 @@ ExampleModel.belongsTo( ExampleParentModel );
 
 describe( 'Model', () => {
 
-	describe( "#find()", () => {
-		it( "should find and retrieve an ExampleModel object", ( done ) => {
+	describe( "#all()", () => {
+		it( "should find and retrieve all ExampleModel objects", ( done ) => {
 			ExampleModel.all
 				.then( ( results ) => {
 					expect( results.length ).to.equal( 3 );
@@ -33,6 +33,26 @@ describe( 'Model', () => {
 				} )
 				.then( ( parent ) => {
 					expect( parent.id ).to.equal( 1 );
+					done();
+				} );
+		} );
+	} );
+
+	describe( "#find()", () => {
+		it( "should find and retrieve the ExampleModel object based on query parameters", ( done ) => {
+			ExampleModel.find( 1 )
+			    .then( ( model ) => {
+				    expect( model.id ).to.equal( 1 );
+				    done();
+			    } );
+		} );
+	} );
+
+	describe( "#first()", () => {
+		it( "should find and retrieve the first ExampleModel object stored in the database", ( done ) => {
+			ExampleModel.first
+				.then( ( model ) => {
+					expect( model ).to.not.equal( undefined );
 					done();
 				} );
 		} );
