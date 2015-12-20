@@ -1,7 +1,7 @@
 var Model 	= require("./lib/model");
 
 function Fossil( config ) {
-	Model.config( config );
+	Model.initialize( config );
 	return Model;
 }
 
