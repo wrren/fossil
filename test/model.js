@@ -16,7 +16,7 @@ var Model 	= require( "../fossil" )( {
 var expect = require( 'chai' ).expect;
 
 class ExampleModel extends Model {}
-
+ExampleModel.map( 'identifier', 'id' );
 
 class ExampleParentModel extends Model {}
 ExampleParentModel.hasMany( ExampleModel );
@@ -45,7 +45,7 @@ describe( 'Model', () => {
 		it( "should find and retrieve the ExampleModel object based on query parameters", ( done ) => {
 			ExampleModel.find( 1 )
 			    .then( ( model ) => {
-				    expect( model.id ).to.equal( 1 );
+				    expect( model.identifier ).to.equal( 1 );
 				    done();
 			    } );
 		} );
