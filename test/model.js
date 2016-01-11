@@ -17,6 +17,7 @@ var expect = require( 'chai' ).expect;
 
 class ExampleModel extends Model {}
 ExampleModel.map( 'identifier', 'id' );
+ExampleModel.validates = { exampleParentModelId: { presence: true } };
 
 class ExampleParentModel extends Model {}
 ExampleParentModel.hasMany( ExampleModel );
@@ -58,6 +59,29 @@ describe( 'Model', () => {
 					expect( model ).to.not.equal( undefined );
 					done();
 				} );
+		} );
+	} );
+
+	describe( "#save()", () => {
+		it( "should save a model object to the database", ( done ) => {
+			ExampleModel.create( { exampleParentModelId: 1, name: "fourth child" } )
+			.then( ( obj ) => {
+				ExampleModel.find( { name: "fourth child" } )
+					.then( ( model ) => {
+						expect( model.identifier ).to.equal( 4 );
+						done();
+					} );
+			} );
+		} );
+
+		it( "should throw an exception when saving an invalid object", ( done ) => {
+			ExampleModel.create( { name: "bad child" } )
+			.then( ( obj ) => {
+				throw "Model failed to be invalidated";
+			} )
+			.catch( ( e ) => {
+				done();
+			} );
 		} );
 	} );
 } );
