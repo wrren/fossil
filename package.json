@@ -1,6 +1,6 @@
 {
   "name": "fossil",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Active-Record style storage system for Node JS",
   "main": "fossil.js",
   "scripts": {
