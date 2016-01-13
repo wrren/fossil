@@ -21,7 +21,7 @@ or reject if an error occurs.
 
 ### Example
 
-```
+```js
 
 var Model = require( "fossil" )( {
     client: 'mysql',
