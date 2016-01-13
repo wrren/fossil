@@ -17,7 +17,7 @@ var expect = require( 'chai' ).expect;
 
 class ExampleModel extends Model {}
 ExampleModel.map( 'identifier', 'id' );
-ExampleModel.validates = { exampleParentModelId: { presence: true } };
+ExampleModel.validations = { exampleParentModelId: { presence: true } };
 
 class ExampleParentModel extends Model {}
 ExampleParentModel.hasMany( ExampleModel );
