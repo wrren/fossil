@@ -1,5 +1,8 @@
 # fossil
 
+[![NPM version](https://badge.fury.io/js/fossil.svg)](http://badge.fury.io/js/fossil)
+[![Build Status](https://travis-ci.org/wrren/fossil.svg)](https://travis-ci.org/wrren/fossil)
+
 ActiveRecord-style persistence system for Node JS projects. Fossil provides a Model base class that may be
 used to create your own Model types. Fossil's Model class provides ActiveRecord functions such as ```create```,
 ```save```, ```find``` and ```where```. Fossil will intelligently link Model types to their corresponding database
