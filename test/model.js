@@ -44,7 +44,7 @@ describe( 'Model', () => {
 
 	describe( "#find()", () => {
 		it( "should find and retrieve the ExampleModel object based on query parameters", ( done ) => {
-			ExampleModel.find( 1 )
+			ExampleModel.find( { identifier: 1 } )
 			    .then( ( model ) => {
 				    expect( model.identifier ).to.equal( 1 );
 				    done();
