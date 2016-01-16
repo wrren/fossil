@@ -24,13 +24,9 @@ ExampleParentModel.hasMany( ExampleModel );
 ExampleModel.belongsTo( ExampleParentModel );
 
 describe( 'Model', () => {
-	after( () => {
-		fs.unlinkSync( path.join( __dirname, "test.sqlite" ) );
-	} );
-
 	describe( "#all()", () => {
 		it( "should find and retrieve all ExampleModel objects", ( done ) => {
-			ExampleModel.all
+			ExampleModel.all()
 				.then( ( results ) => {
 					expect( results.length ).to.equal( 3 );
 					return results[0].exampleParentModel;
@@ -54,7 +50,7 @@ describe( 'Model', () => {
 
 	describe( "#first()", () => {
 		it( "should find and retrieve the first ExampleModel object stored in the database", ( done ) => {
-			ExampleModel.first
+			ExampleModel.first()
 				.then( ( model ) => {
 					expect( model ).to.not.equal( undefined );
 					done();
@@ -62,8 +58,8 @@ describe( 'Model', () => {
 		} );
 	} );
 
-	describe( "#save()", () => {
-		it( "should save a model object to the database", ( done ) => {
+	describe( "#create()", () => {
+		it( "should create a model object and save it to the database", ( done ) => {
 			ExampleModel.create( { exampleParentModelId: 1, name: "fourth child" } )
 			.then( ( obj ) => {
 				ExampleModel.find( { name: "fourth child" } )
